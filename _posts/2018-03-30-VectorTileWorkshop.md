@@ -2,13 +2,13 @@
 layout: post
 title:  "Vector Tiles using the Docker Way"
 categories:
-  - VectorTiles
+  - Vector Tiles
   - Markup
 tags:
   - Post Formats
   - readability
   - standard
-last_modified_at: 2017-03-09T13:01:27-05:00
+last_modified_at: 2018-04-02
 ---
 
 

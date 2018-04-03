@@ -1,5 +1,5 @@
 ---
-layout: page
+layout: category
 title: Web Mapping with Vector Tiles
-sidebar_link: true
+category: Vector Tiles
 ---

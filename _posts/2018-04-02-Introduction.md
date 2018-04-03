@@ -2,6 +2,8 @@
 layout: page
 title: Introduction
 sidebar_link: true
+categories:
+  - Vector Tiles
 ---
 Hello there. This page is contains materials for Washington URISA 2018 Workshop. This workshop describes and demonstrates various FOSS4G (Free Open Source Software for Geospatial) tools to create vector tiles, to stylize vector tiles and to build web-maps.
 
