@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Vector Tiles using the Docker Way"
+title:  "Generating Vector Tiles using the Docker Containers"
 categories:
   - Vector Tiles
   - Markup
