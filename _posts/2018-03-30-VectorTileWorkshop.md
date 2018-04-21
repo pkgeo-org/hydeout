@@ -109,7 +109,7 @@ In this lesson we will learn to use Docker containers to create and serve vector
 
 4. Now in Docker terminal, I can see the geojson:
 
-  ```
+```
 total 84852
 
 -rwxrwxrwx    1 tippecan 50        86111601 Mar  3 15:32 europe_admin0.geojson
