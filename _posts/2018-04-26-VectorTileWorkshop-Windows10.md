@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Generating Vector Tiles using the Docker Containers for Mac OS"
+title:  "Generating Vector Tiles using the Docker Containers for Windows 10 or Windows Home Edition"
 categories:
   - Vector Tiles
   - Markup
@@ -12,21 +12,19 @@ last_modified_at: 2018-04-26
 ---
 
 
-In this lesson we will learn to use Docker containers to create and serve vector tiles on your local machine.
+In this lesson we will learn to use Docker containers to deploy various tools to create and serve vector tiles on your local machine.
 <!--more-->
 
-## Install Docker on MacOS
-*  Docker for MacOS [Here](https://store.docker.com/editions/community/docker-ce-desktop-mac)
-	1. Mount Docker.dmg
-	2. Drag Docker App onto Applications Shortcut
-	3. Launch Docker
-	4. Agree to run application from Internet
-	5. Supply admin password
-
-## Install Docker on Windows
-* Docker for Windows [Here](https://docs.docker.com/docker-for-windows/install/#download-docker-for-windows)
+## 1). Install Docker on Windows 10 Edition
+* Docker Community Edition for Windows [Here](https://docs.docker.com/docker-for-windows/install/#download-docker-for-windows)
 	1. __Requires Windows 10 Pro  or Enterprise__
-   2. 	Ensure that hardware virtualization support is turned on in the BIOS settings
+	2.  Open Power Shell Command Terminal as Adminstrator.
+	3.  Need to turn on Hyper-V which is hardware virtualization support by type in following command at command prompt
+
+`Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V –All`
+
+
+## Install Docker on Windows 10 Home Edition
 * __Does Not Work with Windows 10 Home__
 * Approaches to work arround this:
 	1.	Can be installed on [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
@@ -36,31 +34,30 @@ In this lesson we will learn to use Docker containers to create and serve vector
             + Run the Quick Start Terminal
             + Execute the steps at the Quick Start Terminal
 
-## Install a GDAL/OGR tools container
+## 2). Install a GDAL/OGR tools container
 + Go to [Docker Hub](https://hub.docker.com/)
 + Search for gdal
 + Select [klokantech/gdal](https://hub.docker.com/r/klokantech/gdal/)
 + Copy the Docker Pull Command & run it at command line `docker pull klokantech/gdal`
 
 
-## Convert Shape file into geoJSON file
+## 3). Convert Shape file into GeoJSON file
 1. Download Zipped files of King County Censcus Block [Here](https://drive.google.com/open?id=1tgXXA9rZaMXdLL-eqh0GnU4qon6QoRsI)
-2.	Run OGR tool to convert shape file into geojson
+2. Download into your local directory
+3. Run OGR tool to convert shape file into geojson
 
 
-`docker run -ti --rm -v $(pwd):/data klokantech/gdal ogrinfo PugetSound.shp -al -so`
+* Checking shape file information `docker run -ti --rm -v $(pwd):/data klokantech/gdal ogrinfo PugetSound.shp -al -so` (need to change to work in Windows environment and correct file name)
 
-`docker run -ti --rm -v $(pwd):/data klokantech/gdal ogr2ogr -t_srs EPSG:4326 -f GeoJSON PS_test.geojson PugetSound.shp -Progress`
+* Converting shape file into GeoJSON file `docker run -ti --rm -v $(pwd):/data klokantech/gdal ogr2ogr -t_srs EPSG:4326 -f GeoJSON PS_test.geojson PugetSound.shp -Progress`(need to change to work in Windows enviro and data path and correct file name)
 
-
-
-## Install a Tippecanoe container
+## 4). Install a Tippecanoe container which is a utility tool to create vector tiles
 1.	Search for Tippecanoe on [Docker Hub](https://hub.docker.com/).
-* Select the [jskeates/tippecanoe repository](https://hub.docker.com/r/jskeates/tippecanoe/)
-* Copy the appropriate command from the *Docker Pull Command* section of the page, then paste it at the terminal prompt and hit enter to run it.
++ Select the [jskeates/tippecanoe repository](https://hub.docker.com/r/jskeates/tippecanoe/)
++ Copy the appropriate command from the *Docker Pull Command* section of the page, then paste it at the terminal prompt and hit enter to run it.
 	`docker pull jskeates/tippecanoe`
 
-## Locate a geojson file
+## Locate a GeoJSON file
 1. Down load KC Census Geojson data [Here](https://drive.google.com/file/d/1ofMZSOH34HIMNKqjo0w4H9qzzAukCKQg/view?usp=sharing)
 2. Created C:\Users\randre\tippecanoe
 + [usStates.geojson](https://github.com/pkgeo-org/pkgeo-org.github.io/tree/master/tippecanoe) - figure out how to download the file
