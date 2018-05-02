@@ -100,15 +100,6 @@ http://192.168.99.100:8080/
 
 (See IP listed at top after Docker install)
 
----
-
-How to install Maputnik on windows:
-https://github.com/maputnik/editor/releases/tag/v1.0.2
-
-Maputnik:
-
-http://192.168.99.100:8080/data/census_blocks.json
-
 # End Roger's Full Notes #
 
 ## 1). Install Docker on Windows 10 Edition
@@ -185,3 +176,10 @@ http://192.168.99.100:8080/data/census_blocks.json
 
 
 ## Document Installing, using, and publishing data using Maputnik for styling ##
+### From Roger's Notes ###
+How to install Maputnik on windows:
+https://github.com/maputnik/editor/releases/tag/v1.0.2
+
+Maputnik:
+
+http://192.168.99.100:8080/data/census_blocks.json

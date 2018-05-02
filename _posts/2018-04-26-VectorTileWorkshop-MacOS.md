@@ -29,7 +29,7 @@ In this lesson we will learn to use Docker containers to create and serve vector
 + Go to [Docker Hub](https://hub.docker.com/)
 + Search for gdal
 + Select [klokantech/gdal](https://hub.docker.com/r/klokantech/gdal/)
-+ Copy the Docker Pull Command & run it at Terminal prompt
++ Copy the Docker Pull Command & run it at the Terminal prompt
   
   `docker pull klokantech/gdal`
 
@@ -50,7 +50,7 @@ In this lesson we will learn to use Docker containers to create and serve vector
 * Search for Tippecanoe on [Docker Hub](https://hub.docker.com/)
 * Select the [jskeates/tippecanoe repository](https://hub.docker.com/r/jskeates/tippecanoe/)
 * Copy the appropriate command from the *Docker Pull Command* section of the page
-* Paste it at the Terminal promp, and hit enter to run it
+* Paste it at the Terminal prompt, and hit enter to run it
 
 	`docker pull jskeates/tippecanoe`
 
@@ -67,31 +67,37 @@ In this lesson we will learn to use Docker containers to create and serve vector
 + Start Tippecanoe container in interactive mode at the Terminal prompt
 
 	`docker run -it -v $HOME/tippecanoe:/home/tippecanoe jskeates/tippecanoe:latest`
-	
-* Use the tippecanoe command at the Terminal prompt to create vector tiles from the geoJSON file
+
++ You will see your command prompt change to look like `bash-4.3$`
++ Use the tippecanoe command at the Terminal prompt to create vector tiles from the geoJSON file
 
 	`tippecanoe -o states.mbtiles usStates.geojson`
 	
 + Exit the container when it is done
 
-	`SOME COMMAND HERE`
+	`exit`
 	
 + The vector tiles will be in a new folder: $HOME/tippecanoe/states.mbtiles.
-    + $HOME is replaced with your user directory at a unix style command promt. This works for MacOS, Docker Toolbox, or Linux, but probably not for Windows
+    + $HOME is replaced with your user directory at a unix style command promt.
 
 ## 7. Install a TileServer GL container ##
 + Go to [Docker Hub](https://hub.docker.com/)
 + Search for tileserver-gl
 + Select [klokantech/tileserver-gl](https://hub.docker.com/r/klokantech/tileserver-gl/)
-+ Copy the Docker pull command & run it at command line `docker pull klokantech/tileserver-gl`
++ Copy the Docker pull command & run it at the Terminal prompt
+  `docker pull klokantech/tileserver-gl`
 
 ## 8. Run TileServer GL ##
-+ Be sure Docker is running on your computer
-+ From the command line change into the tippecanoe directory - *This is where you have placed your geoJSON file* `cd $HOME/tippecanoe`
-+ Start the TileServer GL container from the command line`docker run --rm -it -v $(pwd):/data -p 8080:80 klokantech/tileserver-gl`
-+ Mac: http://localhost:8080
-+ Windows: http://192.168.99.100:8080
-    + The specific IP address will be listed near the whale when you start the Quick Start Terminal. The above address is the default.
-+ ctl-C to quit TileServer GL
++ Ensure Docker is running on your computer
++ From the command line change into the tippecanoe directory
+  + *This is where you should have placed your geoJSON file*
+  
+  `cd $HOME/tippecanoe`
+
++ Start the TileServer GL container from the command lin
+  `docker run --rm -it -v $(pwd):/data -p 8080:80 klokantech/tileserver-gl`
+
++ Test that the vector tiles are being servered by entering [http://localhost:8080/](http://localhost:8080) into your browser's address bar
++ After testing, hit ctl-C to quit TileServer GL
 
 # TO DO: Document Installing, using, and publishing data using Maputnik for styling #
