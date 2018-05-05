@@ -32,8 +32,13 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
   + Follow the instructions
   + You will be asked to provide your password durring installation
 + Start Docker for Windows from the Start Menu
+  + Turn on Drive Sharing ![screen shot](/assets/images/windows10pro_docker_share_drives.png "Docker Share Drives Settings") [source](https://forums.docker.com/t/volume-mounts-in-windows-does-not-work/10693/6)
+  + Check the box next to "C"
+  + Windows will prompt you for credentials with admin privs to enable this
++ Check that all needed users are in the local docker-users group for your machine
 
 ## 3. Install a GDAL/OGR tools container ##
++ Start a PowerShell Terminal with your normal user privileges. In other words do not start as admin as you did before.
 + Go to [Docker Hub](https://hub.docker.com/)
 + Search for gdal
 + Select [klokantech/gdal](https://hub.docker.com/r/klokantech/gdal/)
@@ -105,17 +110,12 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
 
 ## 9. Run TileServer GL ##
 + Ensure Docker is running on your computer
-+ From the command line change into the tippecanoe directory
-  + *This is where you should have placed your geoJSON file*
-  
-  `cd $HOME/tippecanoe`
++ From the command line change into the directory where you have placed your mbtiles file.
 
-  __(need to change to work in Windows environment and correct file name)__
-  
 + Start the TileServer GL container from the command lin
-  `docker run --rm -it -v $(pwd):/data -p 8080:80 klokantech/tileserver-gl`
-  
-  __(need to change to work in Windows environment and correct file name)__
+  `docker run --rm -it -v ./data -p 8080:80 klokantech/tileserver-gl`
+
+  __(need to change to work in Windows environment and correct file name) peter will e-mail good command__
   
 + Test that the vector tiles are being servered by entering [http://localhost:8080/](http://localhost:8080) into your browser's address bar
   __(need to test if localhost works in the Windows environment)__
