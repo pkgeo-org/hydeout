@@ -47,21 +47,20 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
   `docker pull klokantech/gdal`
 
 ## 4. Convert Shape file into GeoJSON file ##
-+ Download zipped files of [King County Census Blocks](https://drive.google.com/open?id=1tgXXA9rZaMXdLL-eqh0GnU4qon6QoRsI)
++ Download zipped files of [King County 2000 Census Block Groups](https://drive.google.com/open?id=1UKC5AZYtN1tId1jqORPmBO90LetsYJ9C)
 + Place zip file into your local directory
 + Unzip zip file
 + Use OGR tools at the PowerShell prompt
   + _ogrinfo_: check the shape file's information
 
-    `docker run -ti --rm -v $(pwd):/data klokantech/gdal ogrinfo PugetSound.shp -al -so`
+    `docker run -ti --rm -v $home:/data klokantech/gdal ogrinfo KingCo_2000_Census_BlockGroups.shp -al -so`
   
     __(need to change to work in Windows environment and correct file name)__
 
    + _ogr2ogr_: convert shape file to GeoJSON file
   
-	  `docker run -ti --rm -v $(pwd):/data klokantech/gdal ogr2ogr -t_srs EPSG:4326 -f GeoJSON PS_test.geojson PugetSound.shp -Progress`
+	  `docker run -ti --rm -v $home:/data klokantech/gdal ogr2ogr -t_srs EPSG:4326 -f GeoJSON KingCo_2000_Census_BlockGroups.geojson KingCo_2000_Census_BlockGroups.shp -Progress`
 
-     __(need to change to work in Windows environment and correct file name)__
  
 ## 5. Install a Tippecanoe container which is a utility tool to create vector tiles ##
 * Search for Tippecanoe on [Docker Hub](https://hub.docker.com/)
@@ -77,7 +76,7 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
   + [United States boundary geoJSON data](https://raw.githubusercontent.com/pkgeo-org/jekyll-site-code/master/tippecanoe/usStates.geojson)
 	+ Use _File->Save Page As_ or similar command from your browser to save on your computer
 	+ Be sure to save the file as _usStates.geojson_
-+ If neccesary, move the downloaded files into your local tippecanoe subdirectory
++ ??If neccesary, move the downloaded files into your local tippecanoe subdirectory
 
 ## 7. Create some vector tiles ##
 + Ensure Docker is running on your computer
@@ -113,7 +112,7 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
 + From the command line change into the directory where you have placed your mbtiles file.
 
 + Start the TileServer GL container from the command lin
-  `docker run --rm -it -v ./data -p 8080:80 klokantech/tileserver-gl`
+  `docker run --rm -it -v $Home:/data -p 8080:80 klokantech/tileserver-gl`
 
   __(need to change to work in Windows environment and correct file name) peter will e-mail good command__
   
