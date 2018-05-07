@@ -23,18 +23,20 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
 + Open a PowerShell terminal window as Adminstrator
 + To enable Hyper-V enter the following command at the Power Shell prompt
   
-  `Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V –All`
+    `Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V –All`
 
 ## 2. Install Docker on Windows 10 ##
 + __Requires Windows 10 Pro  or Enterprise__
 + Download [Docker Community Edition for Windows](https://docs.docker.com/docker-for-windows/install/#download-docker-for-windows)
 + Double Click the Docker for Windows Installer.exe file
-  + Follow the instructions
-  + You will be asked to provide your password durring installation
+    + Follow the instructions
+    + You will be asked to provide your password durring installation
 + Start Docker for Windows from the Start Menu
-  + Turn on Drive Sharing ![screen shot](/assets/images/windows10pro_docker_share_drives.png "Docker Share Drives Settings") [source](https://forums.docker.com/t/volume-mounts-in-windows-does-not-work/10693/6)
-  + Check the box next to "C"
-  + Windows will prompt you for credentials with admin privs to enable this
++ Turn on Drive Sharing
+    + Open the settings for Docker
+    + Select the _Share Drives_ option ![screen shot](https://pkgeo-org.github.io/assets/images/windows10pro_docker_share_drives.png "Docker Share Drives Settings") [_image source_](https://forums.docker.com/t/volume-mounts-in-windows-does-not-work/10693/6)
+    + Check the box next to "C"
+    + Click _OK_ and you will be prompted for credentials with admin privileges
 + Check that all needed users are in the local docker-users group for your machine
 
 ## 3. Install a GDAL/OGR tools container ##
@@ -44,23 +46,22 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
 + Select [klokantech/gdal](https://hub.docker.com/r/klokantech/gdal/)
 + Copy the Docker Pull Command & run it at PoweShell prompt
   
-  `docker pull klokantech/gdal`
+    `docker pull klokantech/gdal`
 
 ## 4. Convert Shape file into GeoJSON file ##
 + Download zipped files of [King County 2000 Census Block Groups](https://drive.google.com/open?id=1UKC5AZYtN1tId1jqORPmBO90LetsYJ9C)
 + Place zip file into your local directory
 + Unzip zip file
 + Use OGR tools at the PowerShell prompt
-  + _ogrinfo_: check the shape file's information
+    + _ogrinfo_: check the shape file's information
 
-    `docker run -ti --rm -v $home:/data klokantech/gdal ogrinfo KingCo_2000_Census_BlockGroups.shp -al -so`
+        `docker run -ti --rm -v $home:/data klokantech/gdal ogrinfo KingCo_2000_Census_BlockGroups.shp -al -so`
   
-    __(need to change to work in Windows environment and correct file name)__
+        __(need to $home variable on Peters machine)__
 
-   + _ogr2ogr_: convert shape file to GeoJSON file
-  
-	  `docker run -ti --rm -v $home:/data klokantech/gdal ogr2ogr -t_srs EPSG:4326 -f GeoJSON KingCo_2000_Census_BlockGroups.geojson KingCo_2000_Census_BlockGroups.shp -Progress`
-
+    + _ogr2ogr_: convert shape file to GeoJSON file
+ 
+        `docker run -ti --rm -v $home:/data klokantech/gdal ogr2ogr -t_srs EPSG:4326 -f GeoJSON KingCo_2000_Census_BlockGroups.geojson KingCo_2000_Census_BlockGroups.shp -Progress`
  
 ## 5. Install a Tippecanoe container which is a utility tool to create vector tiles ##
 * Search for Tippecanoe on [Docker Hub](https://hub.docker.com/)
@@ -76,7 +77,7 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
   + [United States boundary geoJSON data](https://raw.githubusercontent.com/pkgeo-org/jekyll-site-code/master/tippecanoe/usStates.geojson)
 	+ Use _File->Save Page As_ or similar command from your browser to save on your computer
 	+ Be sure to save the file as _usStates.geojson_
-+ ??If neccesary, move the downloaded files into your local tippecanoe subdirectory
++ If neccesary, move the downloaded files into your local tippecanoe subdirectory
 
 ## 7. Create some vector tiles ##
 + Ensure Docker is running on your computer
@@ -84,7 +85,7 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
 
 	`docker run -it -v $HOME/tippecanoe:/home/tippecanoe jskeates/tippecanoe:latest`
 
-  __(need to change to work in Windows environment and correct file name)__
+    __(need to change to work in Windows environment and correct file name)__
 
 + You will see your command prompt change to look like `bash-4.3$`
 + Use the tippecanoe command at the Terminal prompt to create vector tiles from the geoJSON file
@@ -96,29 +97,33 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
 	`exit`
 	
 + The vector tiles will be in a new folder: $HOME/tippecanoe/states.mbtiles.
-  + $HOME is replaced with your user directory at a unix style command promt.
+    + $HOME is replaced with your user directory at a unix style command promt.
 
-  __(need to change to work in Windows environment and correct file name)__
+        __(need to change to work in Windows environment and correct file name)__
   
 ## 8. Install a TileServer GL container ##
 + Go to [Docker Hub](https://hub.docker.com/)
 + Search for tileserver-gl
 + Select [klokantech/tileserver-gl](https://hub.docker.com/r/klokantech/tileserver-gl/)
-+ Copy the Docker pull command & run it at the Terminal prompt
-  `docker pull klokantech/tileserver-gl`
++ Copy the Docker pull command & run it at the PowerShell prompt
+
+    `docker pull klokantech/tileserver-gl`
 
 ## 9. Run TileServer GL ##
 + Ensure Docker is running on your computer
 + From the command line change into the directory where you have placed your mbtiles file.
 
-+ Start the TileServer GL container from the command lin
-  `docker run --rm -it -v $Home:/data -p 8080:80 klokantech/tileserver-gl`
++ Start the TileServer GL container from the PowerShell prompt
 
-  __(need to change to work in Windows environment and correct file name) peter will e-mail good command__
+    `docker run --rm -it -v $Home:/data -p 8080:80 klokantech/tileserver-gl`
+
+    __(need to change to work in Windows environment and correct file name)__
   
-+ Test that the vector tiles are being servered by entering [http://localhost:8080/](http://localhost:8080) into your browser's address bar
-  __(need to test if localhost works in the Windows environment)__
-+ After testing, hit ctl-C to quit TileServer GL
++ Test that the vector tiles are being served by entering [http://localhost:8080/](http://localhost:8080) into your browser's address bar
+  
+    __(need to test if localhost works in the Windows environment)__
+
++ After testing, hit __ctl-C__ to quit TileServer GL
 
 # TO DO: Document Installing, using, and publishing data using Maputnik for styling #
 ### From Roger's Notes ###
