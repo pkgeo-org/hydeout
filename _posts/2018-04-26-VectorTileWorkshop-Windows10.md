@@ -55,15 +55,19 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
 + Use OGR tools at the PowerShell prompt
     + _ogrinfo_: check the shape file's information
 
-        `docker run -ti --rm -v $home:/data klokantech/gdal ogrinfo KingCo_2000_Census_BlockGroups.shp -al -so`
+        `docker run -it --rm -v C:\Users\keump:/data klokantech/gdal ogrinfo KingCo_2000_Census_BlockGroups.shp -al -so`
   
         __(need to $home variable on Peters machine)__
 
     + _ogr2ogr_: convert shape file to GeoJSON file
  
-        `docker run -ti --rm -v $home:/data klokantech/gdal ogr2ogr -t_srs EPSG:4326 -f GeoJSON KingCo_2000_Census_BlockGroups.geojson KingCo_2000_Census_BlockGroups.shp -Progress`
- 
-## 5. Install a Tippecanoe container which is a utility tool to create vector tiles ##
+        `docker run -it --rm -v C:\Users\keump:/data klokantech/gdal ogr2ogr -t_srs EPSG:4326 -f GeoJSON KingCo_2000_Census_BlockGroups.geojson KingCo_2000_Census_BlockGroups.shp -Progress`
+
+## 5. Locate a GeoJSON file ##
++ You can download the following GeoJSON file for next step if needed
+  + [King County 2000 Census Block Groups GeoJSON](https://drive.google.com/file/d/1ofMZSOH34HIMNKqjo0w4H9qzzAukCKQg/view?usp=sharing)
+  
+## 6. Install a Tippecanoe container which is a utility tool to create vector tiles ##
 * Search for Tippecanoe on [Docker Hub](https://hub.docker.com/)
 * Select the [jskeates/tippecanoe repository](https://hub.docker.com/r/jskeates/tippecanoe/)
 * Copy the appropriate command from the *Docker Pull Command* section of the page
@@ -71,35 +75,27 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
 
 	`docker pull jskeates/tippecanoe`
 
-## 6. Locate a geoJSON file ##
-+ Download one or both of the following geoJSON files:
-  + [King County census geoJSON data](https://drive.google.com/file/d/1ofMZSOH34HIMNKqjo0w4H9qzzAukCKQg/view?usp=sharing)
-  + [United States boundary geoJSON data](https://raw.githubusercontent.com/pkgeo-org/jekyll-site-code/master/tippecanoe/usStates.geojson)
-	+ Use _File->Save Page As_ or similar command from your browser to save on your computer
-	+ Be sure to save the file as _usStates.geojson_
-+ If neccesary, move the downloaded files into your local tippecanoe subdirectory
-
 ## 7. Create some vector tiles ##
 + Ensure Docker is running on your computer
 + Start Tippecanoe container in interactive mode at the Terminal prompt
 
-	`docker run -it -v $HOME/tippecanoe:/home/tippecanoe jskeates/tippecanoe:latest`
+	`docker run -it -v c:\users\keump:/tippecanoe jskeates/tippecanoe:latest`
 
     __(need to change to work in Windows environment and correct file name)__
 
 + You will see your command prompt change to look like `bash-4.3$`
 + Use the tippecanoe command at the Terminal prompt to create vector tiles from the geoJSON file
 
-	`tippecanoe -o states.mbtiles usStates.geojson`
+	`tippecanoe -o KingCo_2000_Census_BlockGroups.mbtiles KingCo_2000_Census_BlockGroups.geojson`
 	
 + Exit the container when it is done
 
 	`exit`
 	
-+ The vector tiles will be in a new folder: $HOME/tippecanoe/states.mbtiles.
++ The vector tiles will be in a new folder: $HOME/tippecanoe/KingCo_2000_Census_BlockGroups.mbtiles.
     + $HOME is replaced with your user directory at a unix style command promt.
 
-        __(need to change to work in Windows environment and correct file name)__
+        __(need to explain about $Home path as users directory)__
   
 ## 8. Install a TileServer GL container ##
 + Go to [Docker Hub](https://hub.docker.com/)
@@ -115,14 +111,10 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
 
 + Start the TileServer GL container from the PowerShell prompt
 
-    `docker run --rm -it -v $Home:/data -p 8080:80 klokantech/tileserver-gl`
-
-    __(need to change to work in Windows environment and correct file name)__
+    `docker run --rm -it -v C:\users\keump:/data -p 8080:80 klokantech/tileserver-gl`
   
 + Test that the vector tiles are being served by entering [http://localhost:8080/](http://localhost:8080) into your browser's address bar
   
-    __(need to test if localhost works in the Windows environment)__
-
 + After testing, hit __ctl-C__ to quit TileServer GL
 
 # TO DO: Document Installing, using, and publishing data using Maputnik for styling #
