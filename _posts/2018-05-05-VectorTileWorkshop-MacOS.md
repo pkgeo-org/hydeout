@@ -3,14 +3,8 @@ layout: post
 title:  "Generating Vector Tiles using the Docker Containers for Mac OS"
 categories:
   - Vector Tiles
-  - Markup
-tags:
-  - Post Formats
-  - readability
-  - standard
-last_modified_at: 2018-05-01
+last_modified_at: 2018-05-09
 ---
-
 
 In this lesson we will learn to use Docker containers to create and serve vector tiles on your local machine.
 <!--more-->

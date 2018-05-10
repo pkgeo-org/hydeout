@@ -3,27 +3,23 @@ layout: post
 title:  "Generating Vector Tiles using the Docker Containers for Windows 10 (Pro and Enterprise)"
 categories:
   - Vector Tiles
-  - Markup
-tags:
-  - Post Formats
-  - readability
-  - standard
-last_modified_at: 2018-05-01
+last_modified_at: 2018-05-09
 ---
-
 
 In this lesson we will learn to use Docker containers to deploy various tools to create and serve vector tiles on your local machine.
 <!--more-->
 
-__If you are running Windows 10 Home please use the [Windows 10 Home instructions](/vector%20tiles/markup/2018/05/01/VectorTileWorkshop-Windows10Home.html)__
+__If you are running Windows 10 Home please use the [Windows 10 Home instructions](/vector%20tiles/2018/05/01/VectorTileWorkshop-Windows10Home.html)__
 
 ## 1. Enable Hyper-V in Windows ##
 + __Requires Windows 10 Pro  or Enterprise__
 + [Hyper-V](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/about/) provides hardware virtualization support in Windows
 + Open a PowerShell terminal window as Adminstrator
-+ To enable Hyper-V enter the following command at the Power Shell prompt
++ To enable Hyper-V temporarily, enter the following command at the Power Shell prompt
   
     `Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V –All`
+
++ __TIP:__ [Step-by-step guide](https://blogs.technet.microsoft.com/canitpro/2015/09/08/step-by-step-enabling-hyper-v-for-use-on-windows-10/) to enable Hyper-V permanently on your computer. This includes a discussion of how to enable Virtualization in BIOS.
 
 ## 2. Install Docker on Windows 10 ##
 + __Requires Windows 10 Pro  or Enterprise__

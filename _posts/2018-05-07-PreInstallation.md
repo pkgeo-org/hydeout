@@ -3,12 +3,7 @@ layout: post
 title:  "Pre-Installation for Vector Tile Workshop"
 categories:
   - Vector Tiles
-  - Markup
-tags:
-  - Post Formats
-  - readability
-  - standard
-last_modified_at: 2018-04-13
+last_modified_at: 2018-05-09
 ---
 
 
@@ -24,6 +19,7 @@ Please go [here](https://www.docker.com/community-edition) for your Operating Sy
 <!--more-->
 
 ## Install Docker on MacOS
+
 *  Docker for MacOS [Here](https://store.docker.com/editions/community/docker-ce-desktop-mac)
 	1. Mount Docker.dmg
 	2. Drag Docker App onto Applications Shortcut
@@ -32,14 +28,17 @@ Please go [here](https://www.docker.com/community-edition) for your Operating Sy
 	5. Supply admin password
 
 ## Install Docker on Windows 10 for Pro and Home Edition
-* Docker for Windows [Here](https://docs.docker.com/docker-for-windows/install/#download-docker-for-windows)
-	1. __Requires Windows 10 Pro or Enterprise__
-   2. 	Ensure that hardware virtualization support is turned on in the BIOS settings
-* __Does Not Work with Windows 10 Home Edition__
-* Approaches to work arround this:
+* Docker for Windows (Pro and Enterprise) [Here](https://docs.docker.com/docker-for-windows/install/#download-docker-for-windows)
+    1. __Requires Windows 10 Pro or Enterprise__
+    2. 	Ensure that hardware virtualization support is turned on in the BIOS settings
+    3. 	__Does Not Work with Windows 10 Home Edition__
+
+* Approaches to work arround Windows Home:
 	1.	Can be installed on [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
-        + Can be installed on a virtual machine running linux
-        + [Docker Toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/)
-            + Accept Defaults during install
-            + Run the Quick Start Terminal
-            + Execute the steps at the *Quick Start Terminal*
+	2. Can be installed on a virtual machine running linux
+	3. [Docker Toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/)
+        + Accept Defaults during install
+        + Run the Quick Start Terminal
+        + Execute the steps at the *Quick Start Terminal*
+
+* You may need to [enable virtualization for your laptop in the system configuration](https://www.howtogeek.com/213795/how-to-enable-intel-vt-x-in-your-computers-bios-or-uefi-firmware/)
