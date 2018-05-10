@@ -38,8 +38,33 @@ To see how to connect your Docker Client to the Docker Engine running on this vi
 
 + Docker Toolbox is configured to present it's default machine as IP 192.168.99.100 to the browser running natively on your computer
 
+## 3. Install a GDAL/OGR tools container ##
++ Go to [Docker Hub](https://hub.docker.com/)
++ Search for gdal
++ Select [klokantech/gdal](https://hub.docker.com/r/klokantech/gdal/)
++ Copy the Docker Pull Command & run it at Quick Start Terminal prompt
+  
+    `docker pull klokantech/gdal`
+	
+## 4. Convert Shape file into GeoJSON file ##
++ Download zipped files of [King County 2000 Census Block Groups](https://drive.google.com/open?id=1UKC5AZYtN1tId1jqORPmBO90LetsYJ9C)
++ Place zip file into your local user directory (eg: C:\Users\mccombsp)
+    + "mccombsp" will be replaced with your local user name
++ Unzip zip file
++ Use OGR tools at the Quick Start Terminal prompt
+    + _ogrinfo_: check the shape file's information
 
-## 3. ##
+        `docker run -it --rm -v $HOME:/data klokantech/gdal ogrinfo KingCo_2000_Census_BlockGroups.shp -al -so`
+
+
+    + _ogr2ogr_: convert shape file to GeoJSON file
+ 
+        `docker run -it --rm -v C:\Users\keump:/data klokantech/gdal ogr2ogr -t_srs EPSG:4326 -f GeoJSON KingCo_2000_Census_BlockGroups.geojson KingCo_2000_Census_BlockGroups.shp -Progress`
+
+
+
+
+
 
 1. docker pull jskeates/tippecanoe
 
@@ -49,11 +74,6 @@ Using default tag: latest
 latest: Pulling from jskeates/tippecanoe
 Digest: sha256:cdaa7f2dce4df0e340687b79febb6f983baa92d4a15ba0486441b78c40c07d3a
 Status: Image is up to date for jskeates/tippecanoe:latest
-
-1.5 Download GDAL docker instance
-docker pull klokantech/gdal
-
-2. Created C:\Users\randre\tippecanoe
 
 3. ran "docker run -it -v $HOME/tippecanoe:/home/tippecanoe jskeates/tippecanoe:latest" in Docker Quickstart terminal
 
