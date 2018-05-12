@@ -30,7 +30,7 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
 + Start Docker for Windows from the Start Menu
 + Turn on Drive Sharing
     + Open the settings for Docker
-    + Select the _Share Drives_ option ![screen shot](https://pkgeo-org.github.io/assets/images/windows10pro_docker_share_drives.png "Docker Share Drives Settings") [_image source_](https://forums.docker.com/t/volume-mounts-in-windows-does-not-work/10693/6)
+    + Select the _Share Drives_ option ![screen shot](/assets/images/windows10pro_docker_share_drives.png "Docker Share Drives Settings") [_image source_](https://forums.docker.com/t/volume-mounts-in-windows-does-not-work/10693/6)
     + Check the box next to "C"
     + Click _OK_ and you will be prompted for credentials with admin privileges
 + Check that all needed users are in the local docker-users group for your machine
