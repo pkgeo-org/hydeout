@@ -56,12 +56,13 @@ To see how to connect your Docker Client to the Docker Engine running on this vi
 
         `docker run -it --rm -v $HOME:/data klokantech/gdal ogrinfo KingCo_2000_Census_BlockGroups.shp -al -so`
 
-
     + _ogr2ogr_: convert shape file to GeoJSON file
  
-        `docker run -it --rm -v C:\Users\keump:/data klokantech/gdal ogr2ogr -t_srs EPSG:4326 -f GeoJSON KingCo_2000_Census_BlockGroups.geojson KingCo_2000_Census_BlockGroups.shp -Progress`
+        `docker run -it --rm -v $HOME:/data klokantech/gdal ogr2ogr -t_srs EPSG:4326 -f GeoJSON KingCo_2000_Census_BlockGroups.geojson KingCo_2000_Census_BlockGroups.shp -Progress`
 
-
+        __If the above command doesn't work, adapt Roger's command bellow but with the data right in the $HOME directory__
+	
+	    `docker run -it -v $HOME/tippecanoe:/home/tippecanoe klokantech/gdal ogr2ogr /home/tippecanoe/Census_block.geojson -t_srs EPSG:4326 -f GeoJSON  /home/tippecanoe/Census_2000_Block_Groups__blkgrp00_area.shp -Progress`
 
 
 
@@ -76,10 +77,6 @@ Digest: sha256:cdaa7f2dce4df0e340687b79febb6f983baa92d4a15ba0486441b78c40c07d3a
 Status: Image is up to date for jskeates/tippecanoe:latest
 
 3. ran "docker run -it -v $HOME/tippecanoe:/home/tippecanoe jskeates/tippecanoe:latest" in Docker Quickstart terminal
-
-4. Downloaded data file from https://raw.githubusercontent.com/pkgeo-org/pkgeo-org.github.io/master/tippecanoe/usStates.geojson
-(or for Census blockgroup data) https://drive.google.com/open?id=1tgXXA9rZaMXdLL-eqh0GnU4qon6QoRsI
-Census_2000_Block_Groups__blkgrp00_area.shp*
 
 5. Convert Census shapefile to geojson
 
