@@ -108,7 +108,7 @@ To see how to connect your Docker Client to the Docker Engine running on this vi
 
 ## 9. Run TileServer GL ##
 + Ensure Docker is running on your computer
-+ From the command line change into the directory where you have placed your mbtiles file.
++ From the command line change into the directory where you have placed your mbtiles file
 
 + Start the TileServer GL container from the Quick Start Terminal prompt
 
