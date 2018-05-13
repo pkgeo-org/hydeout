@@ -3,42 +3,49 @@ layout: post
 title:  "Pre-Installation for Vector Tile Workshop"
 categories:
   - Vector Tiles
-last_modified_at: 2018-05-09
+last_modified_at: 2018-05-12
 ---
 
-
-Following installation is required before the workshop.
-
-1. Create GitHub account, [https://github.com](https://github.com).
-- Please go [here for how-to](https://services.github.com/on-demand/intro-to-github/create-github-account). We'll use GitHub account to share webmaps we will build at the workshop.
-2. Create Tilehosting account.
-- Please go [here](https://admin.tilehosting.com/auth/widget?mode=select) to create account. Tilehosting will provide vector basemaps for web map.
-3. In order to install Docker and other software during the workshop, the user needs to have Administrative level privilege.
-4. Please download Docker Community Edition according to one's own Operating System.
-Please go [here](https://www.docker.com/community-edition) for your Operating System. For Windows 10 Home Edition, pleaes follow steps below for
+Please bring your laptop with the following items pre-installed. Instructions  are found below. Please feel free to contact us for any questions or issues with following the installation instructions. 
 <!--more-->
 
-## Install Docker on MacOS
++ Create a [GitHub](https://github.com) account.
+    + If you have an existing GitHub account please be sure you can successfully log in.
+    + Please follow the [GitHub how-to](https://services.github.com/on-demand/intro-to-github/create-github-account). We will use the GitHub accounts to share the web maps we will build during the workshop.
 
-*  Docker for MacOS [Here](https://store.docker.com/editions/community/docker-ce-desktop-mac)
-	1. Mount Docker.dmg
-	2. Drag Docker App onto Applications Shortcut
-	3. Launch Docker
-	4. Agree to run application from Internet
-	5. Supply admin password
++ Create a Tilehosting account.
+    + Please go to [Tilehosting.com](https://admin.tilehosting.com/auth/widget?mode=select) to create an account. Tilehosting will provide vector basemaps for our web maps.
 
-## Install Docker on Windows 10 for Pro and Home Edition
-* Docker for Windows (Pro and Enterprise) [Here](https://docs.docker.com/docker-for-windows/install/#download-docker-for-windows)
-    1. __Requires Windows 10 Pro or Enterprise__
-    2. 	Ensure that hardware virtualization support is turned on in the BIOS settings
-    3. 	__Does Not Work with Windows 10 Home Edition__
++ In order to install Docker and other software during the workshop, the user needs to have **Administrative level privileges**. You will not be able to complete the exercises without administrative privileges.
 
-* Approaches to work arround Windows Home:
-	1.	Can be installed on [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10)
-	2. Can be installed on a virtual machine running linux
-	3. [Docker Toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/)
-        + Accept Defaults during install
-        + Run the Quick Start Terminal
-        + Execute the steps at the *Quick Start Terminal*
++ Download and install Node for your operating system. 
+    + Follow the [Node Download Instructions](https://nodejs.org/en/download/).
 
-* You may need to [enable virtualization for your laptop in the system configuration](https://www.howtogeek.com/213795/how-to-enable-intel-vt-x-in-your-computers-bios-or-uefi-firmware/)
++ After Installing Node, please install http-server, which is very simple http server that we’ll run locally for testing and demonstration purposes. 
+    + Follow [Installation Instructions](https://www.npmjs.com/package/http-server)
+
++ Install Docker
+    + Please download Docker Community Edition for your Operating System.
+    + Windows 10 Home Edition is not compatible with Docker Community Edition, you will need to install [Docker Toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/) 
+    + If you have difficulty installing Docker, please contact us.
+
++ Install Docker on MacOS
+    1. [Docker Community Edition](https://store.docker.com/editions/community/docker-ce-desktop-mac)
+    2. Mount Docker.dmg
+    3. Drag Docker App onto Applications Shortcut
+    4. Launch Docker
+    5. Agree to run application from Internet
+    6. Supply admin password
+
++ Windows users may need to [enable virtualization for your laptop in the system configuration](https://www.howtogeek.com/213795/how-to-enable-intel-vt-x-in-your-computers-bios-or-uefi-firmware/).
+
++ Install Docker on Windows (Pro and Enterprise)
+    1. [Docker Community Edition](https://docs.docker.com/docker-for-windows/install/#download-docker-for-windows)
+    2. Requires Windows 10 Pro or Enterprise
+    3. **Does Not Work with Windows 10 Home Edition**
+
++ Install Docker on Windows 10 Home:
+    1. [Docker Toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/)
+    2. Accept Defaults during install
+    3. Run the Quick Start Terminal
+    4. Execute the steps at the Quick Start Terminal

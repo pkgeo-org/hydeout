@@ -3,10 +3,10 @@ layout: post
 title:  "Generating Vector Tiles using the Docker Containers for Mac OS"
 categories:
   - Vector Tiles
-last_modified_at: 2018-05-09
+last_modified_at: 2018-05-12
 ---
 
-In this lesson we will learn to use Docker containers to create and serve vector tiles on your local machine.
+In this lesson we will learn to use Docker containers to create and serve vector tiles on your Macintosh laptop.
 <!--more-->
 
 ## 1. Install Docker on MacOS ##
@@ -27,7 +27,6 @@ In this lesson we will learn to use Docker containers to create and serve vector
   
   `docker pull klokantech/gdal`
 
-
 ## 3. Convert shape file into GeoJSON file ##
 + Download zipped files of [King County Census Blocks](https://drive.google.com/open?id=1tgXXA9rZaMXdLL-eqh0GnU4qon6QoRsI)
 + Place zip file into your local directory
@@ -36,11 +35,16 @@ In this lesson we will learn to use Docker containers to create and serve vector
   + _ogrinfo_: check the shape file's information
   
 	  `docker run -ti --rm -v $(pwd):/data klokantech/gdal ogrinfo PugetSound.shp -al -so`
+	  
   + _ogr2ogr_: convert shape file to GeoJSON file
   
 	  `docker run -ti --rm -v $(pwd):/data klokantech/gdal ogr2ogr -t_srs EPSG:4326 -f GeoJSON PS_test.geojson PugetSound.shp -Progress`
 
-## 4. Install a Tippecanoe container which is a utility tool to create vector tiles ##
+## 4. Locate a geoJSON file ##
++ You can download the following GeoJSON file for next step if needed
+  + [King County 2000 Census Block Groups GeoJSON](https://drive.google.com/file/d/1ofMZSOH34HIMNKqjo0w4H9qzzAukCKQg/view?usp=sharing)
+
+## 5. Install a Tippecanoe container which is a utility tool to create vector tiles ##
 * Search for Tippecanoe on [Docker Hub](https://hub.docker.com/)
 * Select the [jskeates/tippecanoe repository](https://hub.docker.com/r/jskeates/tippecanoe/)
 * Copy the appropriate command from the *Docker Pull Command* section of the page
@@ -48,24 +52,16 @@ In this lesson we will learn to use Docker containers to create and serve vector
 
 	`docker pull jskeates/tippecanoe`
 
-## 5. Locate a geoJSON file ##
-+ Download one or both of the following geoJSON files:
-  + [King County census geoJSON data](https://drive.google.com/file/d/1ofMZSOH34HIMNKqjo0w4H9qzzAukCKQg/view?usp=sharing)
-  + [United States boundary geoJSON data](https://raw.githubusercontent.com/pkgeo-org/jekyll-site-code/master/tippecanoe/usStates.geojson)
-	+ Use _File->Save Page As_ or similar command from your browser to save on your computer
-	+ Be sure to save the file as _usStates.geojson_
-+ If neccesary, move the downloaded files into your local tippecanoe subdirectory
-
 ## 6. Create some vector tiles ##
 + Ensure Docker is running on your computer
 + Start Tippecanoe container in interactive mode at the Terminal prompt
 
-	`docker run -it -v $HOME/tippecanoe:/home/tippecanoe jskeates/tippecanoe:latest`
+	`docker run -it -v $HOME:/tippecanoe jskeates/tippecanoe:latest`
 
 + You will see your command prompt change to look like `bash-4.3$`
 + Use the tippecanoe command at the Terminal prompt to create vector tiles from the geoJSON file
 
-	`tippecanoe -o states.mbtiles usStates.geojson`
+	`tippecanoe -o KingCo_2000_Census_BlockGroups.mbtiles KingCo_2000_Census_BlockGroups.geojson`
 	
 + Exit the container when it is done
 
@@ -83,15 +79,10 @@ In this lesson we will learn to use Docker containers to create and serve vector
 
 ## 8. Run TileServer GL ##
 + Ensure Docker is running on your computer
-+ From the command line change into the tippecanoe directory
-  + *This is where you should have placed your geoJSON file*
-  
-  `cd $HOME/tippecanoe`
++ From the command line change into the directory where you have placed your mbtiles file
++ Start the TileServer GL container from the Terminal prompt
 
-+ Start the TileServer GL container from the command lin
-  `docker run --rm -it -v $(pwd):/data -p 8080:80 klokantech/tileserver-gl`
+    `docker run --rm -it -v $(pwd):/data -p 8080:80 klokantech/tileserver-gl`
 
 + Test that the vector tiles are being servered by entering [http://localhost:8080/](http://localhost:8080) into your browser's address bar
-+ After testing, hit ctl-C to quit TileServer GL
-
-# TO DO: Document Installing, using, and publishing data using Maputnik for styling #
++ After testing, hit __ctl-C__ to quit TileServer GL

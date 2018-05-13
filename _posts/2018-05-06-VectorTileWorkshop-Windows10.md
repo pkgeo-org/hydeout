@@ -3,10 +3,10 @@ layout: post
 title:  "Generating Vector Tiles using the Docker Containers for Windows 10 (Pro and Enterprise)"
 categories:
   - Vector Tiles
-last_modified_at: 2018-05-09
+last_modified_at: 2018-05-12
 ---
 
-In this lesson we will learn to use Docker containers to deploy various tools to create and serve vector tiles on your local machine.
+In this lesson we will learn to use Docker containers to deploy various tools to create and serve vector tiles on your laptop running Windows Pro or Enterprise Edition.
 <!--more-->
 
 __If you are running Windows 10 Home please use the [Windows 10 Home instructions](/vector%20tiles/2018/05/01/VectorTileWorkshop-Windows10Home.html)__
@@ -45,16 +45,15 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
     `docker pull klokantech/gdal`
 
 ## 4. Convert Shape file into GeoJSON file ##
-+ Download zipped files of [King County 2000 Census Block Groups](https://drive.google.com/open?id=1UKC5AZYtN1tId1jqORPmBO90LetsYJ9C)
-+ Place zip file into your local directory
++ Download zipped files of [King County 2000 Census Block Groups](https://drive.google.com/file/d/1FfLKbGalJnULsJo1fjzOhwtO4wVYHvoq)
++ Place zip file into your local user directory (eg: C:\Users\keump)
+    + "keump" will be replaced with your local user name
 + Unzip zip file
 + Use OGR tools at the PowerShell prompt
     + _ogrinfo_: check the shape file's information
 
         `docker run -it --rm -v C:\Users\keump:/data klokantech/gdal ogrinfo KingCo_2000_Census_BlockGroups.shp -al -so`
   
-        __(need to $home variable on Peters machine)__
-
     + _ogr2ogr_: convert shape file to GeoJSON file
  
         `docker run -it --rm -v C:\Users\keump:/data klokantech/gdal ogr2ogr -t_srs EPSG:4326 -f GeoJSON KingCo_2000_Census_BlockGroups.geojson KingCo_2000_Census_BlockGroups.shp -Progress`
@@ -67,20 +66,18 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
 * Search for Tippecanoe on [Docker Hub](https://hub.docker.com/)
 * Select the [jskeates/tippecanoe repository](https://hub.docker.com/r/jskeates/tippecanoe/)
 * Copy the appropriate command from the *Docker Pull Command* section of the page
-* Paste it at the Terminal prompt, and hit enter to run it
+* Paste it at the PowerShell prompt, and hit enter to run it
 
 	`docker pull jskeates/tippecanoe`
 
 ## 7. Create some vector tiles ##
 + Ensure Docker is running on your computer
-+ Start Tippecanoe container in interactive mode at the Terminal prompt
++ Start Tippecanoe container in interactive mode at the PowerShell prompt
 
 	`docker run -it -v c:\users\keump:/tippecanoe jskeates/tippecanoe:latest`
 
-    __(need to change to work in Windows environment and correct file name)__
-
 + You will see your command prompt change to look like `bash-4.3$`
-+ Use the tippecanoe command at the Terminal prompt to create vector tiles from the geoJSON file
++ Use the tippecanoe command at the PowerShell prompt to create vector tiles from the geoJSON file
 
 	`tippecanoe -o KingCo_2000_Census_BlockGroups.mbtiles KingCo_2000_Census_BlockGroups.geojson`
 	
@@ -88,11 +85,9 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
 
 	`exit`
 	
-+ The vector tiles will be in a new folder: $HOME/tippecanoe/KingCo_2000_Census_BlockGroups.mbtiles.
++ The vector tiles will be in a new folder: $HOME/tippecanoe/KingCo_2000_Census_BlockGroups.mbtiles
     + $HOME is replaced with your user directory at a unix style command promt.
 
-        __(need to explain about $Home path as users directory)__
-  
 ## 8. Install a TileServer GL container ##
 + Go to [Docker Hub](https://hub.docker.com/)
 + Search for tileserver-gl
@@ -112,12 +107,3 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
 + Test that the vector tiles are being served by entering [http://localhost:8080/](http://localhost:8080) into your browser's address bar
   
 + After testing, hit __ctl-C__ to quit TileServer GL
-
-# TO DO: Document Installing, using, and publishing data using Maputnik for styling #
-### From Roger's Notes ###
-How to install Maputnik on windows:
-https://github.com/maputnik/editor/releases/tag/v1.0.2
-
-Maputnik:
-
-http://192.168.99.100:8080/data/census_blocks.json
