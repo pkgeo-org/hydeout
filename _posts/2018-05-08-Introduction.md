@@ -7,7 +7,7 @@ last_modified_at: 2018-05-09
 ---
 Hello there. This page is contains materials for Washington URISA 2018 Workshop. This workshop describes and demonstrates various FOSS4G (Free Open Source Software for Geospatial) tools to create [*vector tiles*](https://en.wikipedia.org/wiki/Vector_tiles), to stylize vector tiles and to build web-maps.
 
-We'll explore FOSS4G workflow to create web-maps from vector tiles. We'll have presentations with demonstrations which will follow with hands-on exercises. We'll create vector tiles then style them to create web-maps. In addition, we'll be exploring [Mapbox Studio](https://www.mapbox.com/mapbox-studio/) workflow as well.
+We'll explore FOSS4G workflow to create web-maps from vector tiles. We'll have presentations with demonstrations which we will follow with hands-on exercises. We'll create vector tiles then style them to create web-maps. In addition, we'll be exploring [Mapbox Studio](https://www.mapbox.com/mapbox-studio/) workflow as well.
 
 Who are we? We are two FOSS4G enthuists GIS professionals working for King County, Washington.
 
