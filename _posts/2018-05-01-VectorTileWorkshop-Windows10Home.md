@@ -62,7 +62,7 @@ To see how to connect your Docker Client to the Docker Engine running on this vi
 
 ## 5. Locate a GeoJSON file ##
 + You can download the following GeoJSON file for next step if needed
-  + [King County 2000 Census Block Groups GeoJSON](https://drive.google.com/open?id=1ofMZSOH34HIMNKqjo0w4H9qzzAukCKQg)
+    + [King County 2000 Census Block Groups GeoJSON](https://drive.google.com/open?id=1ofMZSOH34HIMNKqjo0w4H9qzzAukCKQg)
   
 ## 6. Install a Tippecanoe container which is a utility tool to create vector tiles ##
 * Search for Tippecanoe on [Docker Hub](https://hub.docker.com/)
