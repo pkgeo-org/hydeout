@@ -19,7 +19,7 @@ __If you are running Windows 10 Pro or Window 10 Enterprise please use the [Wind
 	
 ## 2. Run the Quick Start Terminal ##
 + Double-click the  Quick Start Terminal installed by Docker Toolbox
-    + You will execute all the docker commands in the steps below at the *Quick Start Terminal* prompt
+    + You will execute all the docker commands in the steps below at the *Docker Quickstart Terminal* prompt
     + For help getting started, check out the docs at https://docs.docker.com
 
         ```
@@ -50,7 +50,7 @@ To see how to connect your Docker Client to the Docker Engine running on this vi
 + Download zipped files of [King County 2000 Census Block Groups](https://drive.google.com/file/d/1FfLKbGalJnULsJo1fjzOhwtO4wVYHvoq)
 + Place zip file into your local user directory (eg: C:\Users\mccombsp)
     + "mccombsp" will be replaced with your local user name
-+ Unzip zip file
++ Unzip zip file. Be sure that the files are in your local user directory, not in a subdirectory.
 + Use OGR tools at the Quick Start Terminal prompt
     + _ogrinfo_: check the shape file's information
 
@@ -59,10 +59,6 @@ To see how to connect your Docker Client to the Docker Engine running on this vi
     + _ogr2ogr_: convert shape file to GeoJSON file
  
         `docker run -it --rm -v $HOME:/data klokantech/gdal ogr2ogr -t_srs EPSG:4326 -f GeoJSON KingCo_2000_Census_BlockGroups.geojson KingCo_2000_Census_BlockGroups.shp -Progress`
-
-        __If the above command doesn't work, adapt Roger's command bellow but with the data right in the $HOME directory__
-	
-	    `docker run -it -v $HOME/tippecanoe:/home/tippecanoe klokantech/gdal ogr2ogr /home/tippecanoe/Census_block.geojson -t_srs EPSG:4326 -f GeoJSON  /home/tippecanoe/Census_2000_Block_Groups__blkgrp00_area.shp -Progress`
 
 ## 5. Locate a GeoJSON file ##
 + You can download the following GeoJSON file for next step if needed
@@ -80,11 +76,7 @@ To see how to connect your Docker Client to the Docker Engine running on this vi
 + Ensure Docker is running on your computer
 + Start Tippecanoe container in interactive mode at the Quick Start Terminal prompt
 
-	`docker run -it -v $HOME:/tippecanoe jskeates/tippecanoe:latest`
-
-   __If the above command doesn't work, adapt Roger's command bellow but with the data right in the $HOME directory__
-	
-	`docker run -it -v $HOME/tippecanoe:/home/tippecanoe jskeates/tippecanoe:latest" in Docker Quickstart terminal`
+	`docker run -it -v $HOME:/home/tippecanoe jskeates/tippecanoe:latest`
 
 + You will see your command prompt change to look like `bash-4.3$`
 + Use the tippecanoe command at the Terminal prompt to create vector tiles from the geoJSON file
@@ -95,8 +87,8 @@ To see how to connect your Docker Client to the Docker Engine running on this vi
 
 	`exit`
 	
-+ The vector tiles will be in a new folder: $HOME/tippecanoe/KingCo_2000_Census_BlockGroups.mbtiles
-    + $HOME is replaced with your user directory at a unix style command promt.
++ The vector tiles will be $HOME/KingCo_2000_Census_BlockGroups.mbtiles
+    + $HOME represents your user directory at a unix style command promt.
 	
 ## 8. Install a TileServer GL container ##
 + Go to [Docker Hub](https://hub.docker.com/)
@@ -108,7 +100,7 @@ To see how to connect your Docker Client to the Docker Engine running on this vi
 
 ## 9. Run TileServer GL ##
 + Ensure Docker is running on your computer
-+ From the command line change into the directory where you have placed your mbtiles file
++ From the command line change into the directory `cd $HOME` where you have placed your mbtiles file
 
 + Start the TileServer GL container from the Quick Start Terminal prompt
 
