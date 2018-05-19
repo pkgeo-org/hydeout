@@ -88,7 +88,7 @@ To see how to connect your Docker Client to the Docker Engine running on this vi
 	`exit`
 	
 + The vector tiles will be $HOME/KingCo_2000_Census_BlockGroups.mbtiles
-    + $HOME represents your user directory at a unix style command promt.
+    + $HOME represents your user directory at a unix style command prompt.
 	
 ## 8. Install a TileServer GL container ##
 + Go to [Docker Hub](https://hub.docker.com/)

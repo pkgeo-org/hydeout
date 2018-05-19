@@ -14,7 +14,7 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
 ## 1. Enable Hyper-V in Windows ##
 + __Requires Windows 10 Pro  or Enterprise__
 + [Hyper-V](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/about/) provides hardware virtualization support in Windows
-+ Open a PowerShell terminal window as Adminstrator
++ Open a PowerShell terminal window as Administrator
 + To enable Hyper-V temporarily, enter the following command at the Power Shell prompt
   
     `Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V –All`
@@ -26,7 +26,7 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
 + Download [Docker Community Edition for Windows](https://docs.docker.com/docker-for-windows/install/#download-docker-for-windows)
 + Double Click the Docker for Windows Installer.exe file
     + Follow the instructions and accept default settings
-    + You may be asked to provide your password durring installation 
+    + You may be asked to provide your password during installation 
 	+ You may be asked to restart your computer to complete the installation. If your computer restarts, you will need to reenable Hyper-V as explained in step 1 above.
 + Start Docker for Windows from the Start Menu
 + Turn on Drive Sharing
@@ -41,7 +41,7 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
 + Go to [Docker Hub](https://hub.docker.com/)
 + Search for gdal
 + Select [klokantech/gdal](https://hub.docker.com/r/klokantech/gdal/)
-+ Copy the Docker Pull Command & run it at PoweShell prompt
++ Copy the Docker Pull Command & run it at PowerShell prompt
   
     `docker pull klokantech/gdal`
 
@@ -87,7 +87,7 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
 	`exit`
 	
 + The vector tiles will be $HOME/KingCo_2000_Census_BlockGroups.mbtiles
-    + $HOME represents your user directory at a unix style command promt.
+    + $HOME represents your user directory at a unix style command prompt.
 
 ## 8. Install a TileServer GL container ##
 + Go to [Docker Hub](https://hub.docker.com/)
