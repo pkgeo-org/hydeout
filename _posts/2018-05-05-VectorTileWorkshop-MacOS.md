@@ -3,7 +3,7 @@ layout: post
 title:  "Generating Vector Tiles using the Docker Containers for Mac OS"
 categories:
   - Vector Tiles
-last_modified_at: 2018-05-12
+last_modified_at: 2018-05-19
 ---
 
 In this lesson we will learn to use Docker containers to create and serve vector tiles on your Macintosh laptop.
@@ -34,15 +34,15 @@ In this lesson we will learn to use Docker containers to create and serve vector
 + Use OGR tools at the Terminal prompt
   + _ogrinfo_: check the shape file's information
   
-	  `docker run -ti --rm -v $(pwd):/data klokantech/gdal ogrinfo PugetSound.shp -al -so`
+	  `docker run -ti --rm -v $(pwd):/data klokantech/gdal ogrinfo KingCo_2000_Census_BlockGroups.shp -al -so`
 	  
   + _ogr2ogr_: convert shape file to GeoJSON file
   
-	  `docker run -ti --rm -v $(pwd):/data klokantech/gdal ogr2ogr -t_srs EPSG:4326 -f GeoJSON PS_test.geojson PugetSound.shp -Progress`
+	  `docker run -ti --rm -v $(pwd):/data klokantech/gdal ogr2ogr -t_srs EPSG:4326 -f GeoJSON KingCo_2000_Census_BlockGroups.geojson KingCo_2000_Census_BlockGroups.shp -Progress`
 
 ## 4. Locate a geoJSON file ##
 + You can download the following GeoJSON file for next step if needed
-  + [King County 2000 Census Block Groups GeoJSON](https://drive.google.com/file/d/1ofMZSOH34HIMNKqjo0w4H9qzzAukCKQg/view?usp=sharing)
+  + [King County 2000 Census Block Groups GeoJSON](https://drive.google.com/open?id=1ofMZSOH34HIMNKqjo0w4H9qzzAukCKQg)
 
 ## 5. Install a Tippecanoe container which is a utility tool to create vector tiles ##
 * Search for Tippecanoe on [Docker Hub](https://hub.docker.com/)
@@ -56,7 +56,7 @@ In this lesson we will learn to use Docker containers to create and serve vector
 + Ensure Docker is running on your computer
 + Start Tippecanoe container in interactive mode at the Terminal prompt
 
-	`docker run -it -v $HOME:/tippecanoe jskeates/tippecanoe:latest`
+	`docker run -it -v $(pwd):/home/tippecanoe jskeates/tippecanoe:latest`
 
 + You will see your command prompt change to look like `bash-4.3$`
 + Use the tippecanoe command at the Terminal prompt to create vector tiles from the geoJSON file
@@ -67,8 +67,7 @@ In this lesson we will learn to use Docker containers to create and serve vector
 
 	`exit`
 	
-+ The vector tiles will be in a new folder: $HOME/tippecanoe/states.mbtiles.
-    + $HOME is replaced with your user directory at a unix style command promt.
++ The vector tiles will now be in your directory
 
 ## 7. Install a TileServer GL container ##
 + Go to [Docker Hub](https://hub.docker.com/)
@@ -77,7 +76,7 @@ In this lesson we will learn to use Docker containers to create and serve vector
 + Copy the Docker pull command & run it at the Terminal prompt
   `docker pull klokantech/tileserver-gl`
 
-## 8. Run TileServer GL ##
+## 8. Run TileServer GL <a name='starttileserver'></a> ##
 + Ensure Docker is running on your computer
 + From the command line change into the directory where you have placed your mbtiles file
 + Start the TileServer GL container from the Terminal prompt

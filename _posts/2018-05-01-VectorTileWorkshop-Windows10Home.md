@@ -3,7 +3,7 @@ layout: post
 title:  "Generating Vector Tiles using the Docker Containers for Windows 10 (Home)"
 categories:
   - Vector Tiles
-last_modified_at: 2018-05-12
+last_modified_at: 2018-05-19
 ---
 
 
@@ -62,7 +62,7 @@ To see how to connect your Docker Client to the Docker Engine running on this vi
 
 ## 5. Locate a GeoJSON file ##
 + You can download the following GeoJSON file for next step if needed
-  + [King County 2000 Census Block Groups GeoJSON](https://drive.google.com/file/d/1ofMZSOH34HIMNKqjo0w4H9qzzAukCKQg/view?usp=sharing)
+  + [King County 2000 Census Block Groups GeoJSON](https://drive.google.com/open?id=1ofMZSOH34HIMNKqjo0w4H9qzzAukCKQg)
   
 ## 6. Install a Tippecanoe container which is a utility tool to create vector tiles ##
 * Search for Tippecanoe on [Docker Hub](https://hub.docker.com/)
@@ -98,7 +98,7 @@ To see how to connect your Docker Client to the Docker Engine running on this vi
 
     `docker pull klokantech/tileserver-gl`
 
-## 9. Run TileServer GL ##
+## 9. Run TileServer GL <a name='starttileserver'></a> ##
 + Ensure Docker is running on your computer
 + From the command line change into the directory `cd $HOME` where you have placed your mbtiles file
 

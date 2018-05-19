@@ -3,7 +3,7 @@ layout: post
 title:  "Generating Vector Tiles using the Docker Containers for Windows 10 (Pro and Enterprise)"
 categories:
   - Vector Tiles
-last_modified_at: 2018-05-12
+last_modified_at: 2018-05-19
 ---
 
 In this lesson we will learn to use Docker containers to deploy various tools to create and serve vector tiles on your laptop running Windows Pro or Enterprise Edition.
@@ -25,15 +25,16 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
 + __Requires Windows 10 Pro  or Enterprise__
 + Download [Docker Community Edition for Windows](https://docs.docker.com/docker-for-windows/install/#download-docker-for-windows)
 + Double Click the Docker for Windows Installer.exe file
-    + Follow the instructions
-    + You will be asked to provide your password durring installation
+    + Follow the instructions and accept default settings
+    + You may be asked to provide your password durring installation 
+	+ You may be asked to restart your computer to complete the installation. If your computer restarts, you will need to reenable Hyper-V as explained in step 1 above.
 + Start Docker for Windows from the Start Menu
 + Turn on Drive Sharing
     + Open the settings for Docker
     + Select the _Share Drives_ option ![screen shot](/assets/images/windows10pro_docker_share_drives.png "Docker Share Drives Settings") [_image source_](https://forums.docker.com/t/volume-mounts-in-windows-does-not-work/10693/6)
     + Check the box next to "C"
     + Click _OK_ and you will be prompted for credentials with admin privileges
-+ Check that all needed users are in the local docker-users group for your machine
++ If Docker was installed with an admin account different from your user account, you will need to check that your user is in the local docker-users group for your machine
 
 ## 3. Install a GDAL/OGR tools container ##
 + Start a PowerShell Terminal with your normal user privileges. In other words do not start as admin as you did before.
@@ -60,7 +61,7 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
 
 ## 5. Locate a GeoJSON file ##
 + You can download the following GeoJSON file for next step if needed
-  + [King County 2000 Census Block Groups GeoJSON](https://drive.google.com/file/d/1ofMZSOH34HIMNKqjo0w4H9qzzAukCKQg/view?usp=sharing)
+  + [King County 2000 Census Block Groups GeoJSON](https://drive.google.com/open?id=1ofMZSOH34HIMNKqjo0w4H9qzzAukCKQg)
   
 ## 6. Install a Tippecanoe container which is a utility tool to create vector tiles ##
 * Search for Tippecanoe on [Docker Hub](https://hub.docker.com/)
@@ -74,7 +75,7 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
 + Ensure Docker is running on your computer
 + Start Tippecanoe container in interactive mode at the PowerShell prompt
 
-	`docker run -it -v c:\users\keump:/tippecanoe jskeates/tippecanoe:latest`
+	`docker run -it -v c:\users\keump:/home/tippecanoe jskeates/tippecanoe:latest`
 
 + You will see your command prompt change to look like `bash-4.3$`
 + Use the tippecanoe command at the PowerShell prompt to create vector tiles from the geoJSON file
@@ -85,8 +86,8 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
 
 	`exit`
 	
-+ The vector tiles will be in a new folder: $HOME/tippecanoe/KingCo_2000_Census_BlockGroups.mbtiles
-    + $HOME is replaced with your user directory at a unix style command promt.
++ The vector tiles will be $HOME/KingCo_2000_Census_BlockGroups.mbtiles
+    + $HOME represents your user directory at a unix style command promt.
 
 ## 8. Install a TileServer GL container ##
 + Go to [Docker Hub](https://hub.docker.com/)
@@ -96,14 +97,15 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
 
     `docker pull klokantech/tileserver-gl`
 
-## 9. Run TileServer GL ##
+## 9. Run TileServer GL <a name='starttileserver'></a>##
 + Ensure Docker is running on your computer
 + From the command line change into the directory where you have placed your mbtiles file.
 
 + Start the TileServer GL container from the PowerShell prompt
 
     `docker run --rm -it -v C:\users\keump:/data -p 8080:80 klokantech/tileserver-gl`
-  
+ 
++ Windows may prompt you to create a firewall exception, depending on your security settings. If asked, agree to the exception
 + Test that the vector tiles are being served by entering [http://localhost:8080/](http://localhost:8080) into your browser's address bar
   
 + After testing, hit __ctl-C__ to quit TileServer GL
