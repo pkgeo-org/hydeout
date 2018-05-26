@@ -6,7 +6,7 @@ categories:
 last_modified_at: 2018-05-12
 ---
 
-Please bring your laptop with the following items pre-installed. Instructions  are found below. Please feel free to contact us for any questions or issues with following the installation instructions. 
+Please bring your laptop with the following items pre-installed. Instructions  are found below. Please feel free to contact us for any questions or issues with following the installation instructions.
 <!--more-->
 
 + Create a [GitHub](https://github.com) account.
@@ -14,19 +14,19 @@ Please bring your laptop with the following items pre-installed. Instructions  a
     + Please follow the [GitHub how-to](https://services.github.com/on-demand/intro-to-github/create-github-account). We will use the GitHub accounts to share the web maps we will build during the workshop.
 
 + Create a Tilehosting account.
-    + Please go to [Tilehosting.com](https://admin.tilehosting.com/auth/widget?mode=select) to create an account. Tilehosting will provide vector basemaps for our web maps.
+    + Please go to [Maptiler.com.com](http://www.maptiler.com/cloud/) to create an account. Maptiler will provide vector basemaps for our web maps.
 
 + In order to install Docker and other software during the workshop, the user needs to have **Administrative level privileges**. You will not be able to complete the exercises without administrative privileges.
 
-+ Download and install Node for your operating system. 
++ Download and install Node for your operating system.
     + Follow the [Node Download Instructions](https://nodejs.org/en/download/).
 
-+ After Installing Node, please install http-server, which is very simple http server that we’ll run locally for testing and demonstration purposes. 
++ After Installing Node, please install http-server, which is very simple http server that we’ll run locally for testing and demonstration purposes.
     + Follow [Installation Instructions](https://www.npmjs.com/package/http-server)
 
 + Install Docker
     + Please download Docker Community Edition for your Operating System.
-    + Windows 10 Home Edition is not compatible with Docker Community Edition, you will need to install [Docker Toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/) 
+    + Windows 10 Home Edition is not compatible with Docker Community Edition, you will need to install [Docker Toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/)
     + If you have difficulty installing Docker, please contact us.
 
 + Install Docker on MacOS

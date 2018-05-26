@@ -16,7 +16,7 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
 + [Hyper-V](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/about/) provides hardware virtualization support in Windows
 + Open a PowerShell terminal window as Administrator
 + To enable Hyper-V temporarily, enter the following command at the Power Shell prompt
-  
+
     `Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V –All`
 
 + __TIP:__ [Step-by-step guide](https://blogs.technet.microsoft.com/canitpro/2015/09/08/step-by-step-enabling-hyper-v-for-use-on-windows-10/) to enable Hyper-V permanently on your computer. This includes a discussion of how to enable Virtualization in BIOS.
@@ -26,7 +26,7 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
 + Download [Docker Community Edition for Windows](https://docs.docker.com/docker-for-windows/install/#download-docker-for-windows)
 + Double Click the Docker for Windows Installer.exe file
     + Follow the instructions and accept default settings
-    + You may be asked to provide your password during installation 
+    + You may be asked to provide your password during installation
 	+ You may be asked to restart your computer to complete the installation. If your computer restarts, you will need to reenable Hyper-V as explained in step 1 above.
 + Start Docker for Windows from the Start Menu
 + Turn on Drive Sharing
@@ -42,7 +42,7 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
 + Search for gdal
 + Select [klokantech/gdal](https://hub.docker.com/r/klokantech/gdal/)
 + Copy the Docker Pull Command & run it at PowerShell prompt
-  
+
     `docker pull klokantech/gdal`
 
 ## 4. Convert Shape file into GeoJSON file ##
@@ -54,15 +54,15 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
     + _ogrinfo_: check the shape file's information
 
         `docker run -it --rm -v C:\Users\keump:/data klokantech/gdal ogrinfo KingCo_2000_Census_BlockGroups.shp -al -so`
-  
+
     + _ogr2ogr_: convert shape file to GeoJSON file
- 
+
         `docker run -it --rm -v C:\Users\keump:/data klokantech/gdal ogr2ogr -t_srs EPSG:4326 -f GeoJSON KingCo_2000_Census_BlockGroups.geojson KingCo_2000_Census_BlockGroups.shp -Progress`
 
 ## 5. Locate a GeoJSON file ##
 + You can download the following GeoJSON file for next step if needed
   + [King County 2000 Census Block Groups GeoJSON](https://drive.google.com/open?id=1ofMZSOH34HIMNKqjo0w4H9qzzAukCKQg)
-  
+
 ## 6. Install a Tippecanoe container which is a utility tool to create vector tiles ##
 * Search for Tippecanoe on [Docker Hub](https://hub.docker.com/)
 * Select the [jskeates/tippecanoe repository](https://hub.docker.com/r/jskeates/tippecanoe/)
@@ -81,11 +81,11 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
 + Use the tippecanoe command at the PowerShell prompt to create vector tiles from the geoJSON file
 
 	`tippecanoe -o KingCo_2000_Census_BlockGroups.mbtiles KingCo_2000_Census_BlockGroups.geojson`
-	
+
 + Exit the container when it is done
 
 	`exit`
-	
+
 + The vector tiles will be $HOME/KingCo_2000_Census_BlockGroups.mbtiles
     + $HOME represents your user directory at a unix style command prompt.
 
@@ -104,8 +104,8 @@ __If you are running Windows 10 Home please use the [Windows 10 Home instruction
 + Start the TileServer GL container from the PowerShell prompt
 
     `docker run --rm -it -v C:\users\keump:/data -p 8080:80 klokantech/tileserver-gl`
- 
+
 + Windows may prompt you to create a firewall exception, depending on your security settings. If asked, agree to the exception
 + Test that the vector tiles are being served by entering [http://localhost:8080/](http://localhost:8080) into your browser's address bar
-  
+
 + After testing, hit __ctl-C__ to quit TileServer GL
