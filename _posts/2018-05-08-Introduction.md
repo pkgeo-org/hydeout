@@ -11,7 +11,7 @@ We'll explore FOSS4G workflow to create web-maps from vector tiles. We'll have p
 
 Who are we? We are two FOSS4G enthusiasts GIS professionals working for King County, Washington.
 
-[Peter Keum](http://pkgeo.com/), GISP. GIS Specialist with King County Wastewater Treatment Division/KC GIS Center.
+[Peter Keum](http://pkgeo.com/), GISP. GIS Specialist with King County Wastewater Treatment Division.
 [LinkedIn](https://www.linkedin.com/in/pkgeo/)
 
 [Paul McCombs](https://en.gravatar.com/paulmccombs) GIS Specialist with King County GIS Center.
